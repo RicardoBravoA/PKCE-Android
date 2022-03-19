@@ -48,6 +48,10 @@ class MovieFragment : Fragment() {
         binding.buttonGet.setOnClickListener {
             movieViewModel.get()
         }
+
+        binding.buttonPost.setOnClickListener {
+            movieViewModel.pay(clientId = "100", amount = "100")
+        }
     }
 
     override fun onDestroyView() {

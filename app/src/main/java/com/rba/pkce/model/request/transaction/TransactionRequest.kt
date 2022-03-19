@@ -6,5 +6,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class TransactionRequest(
     val clientId : String,
-    val amount : Double
+    val amount : String
 ) : Parcelable

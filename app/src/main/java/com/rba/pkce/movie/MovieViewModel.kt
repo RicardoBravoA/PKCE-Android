@@ -52,7 +52,7 @@ class MovieViewModel(
         }
     }
 
-    fun pay(clientId: String, amount: Double) {
+    fun pay(clientId: String, amount: String) {
         val request = TransactionRequest(clientId, amount)
         viewModelScope.launch {
             try {
