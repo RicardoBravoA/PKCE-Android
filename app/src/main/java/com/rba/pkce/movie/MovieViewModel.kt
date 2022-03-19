@@ -42,7 +42,5 @@ class MovieViewModel(
                 _error.value = SingleEvent(e.localizedMessage ?: "I'm an error")
             }
         }
-
     }
-
 }

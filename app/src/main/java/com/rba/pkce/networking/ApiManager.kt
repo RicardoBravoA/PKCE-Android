@@ -1,6 +1,5 @@
 package com.rba.pkce.networking
 
-import androidx.viewbinding.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -15,10 +14,11 @@ object ApiManager {
         get() {
 
             val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.BODY
+            logging.level = HttpLoggingInterceptor.Level.HEADERS
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(logging)
+                .addInterceptor(HeaderInterceptor())
                 .connectTimeout(10, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(10, TimeUnit.SECONDS)
@@ -39,5 +39,4 @@ object ApiManager {
 
         return apiInterface!!
     }
-
 }
