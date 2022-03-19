@@ -14,7 +14,7 @@ object ApiManager {
         get() {
 
             val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.HEADERS
+            logging.level = HttpLoggingInterceptor.Level.BODY
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(logging)

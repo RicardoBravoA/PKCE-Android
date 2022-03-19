@@ -7,6 +7,6 @@ import retrofit2.http.GET
 interface ApiInterface {
 
     @GET("movie")
-    suspend fun movie(): Response<Movie>
+    suspend fun movie(): Response<List<Movie>>
 
 }

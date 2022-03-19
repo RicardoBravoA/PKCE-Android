@@ -2,7 +2,7 @@ package com.rba.pkce.datasource
 
 import com.rba.pkce.model.error.ErrorModel
 import com.rba.pkce.model.movie.Movie
-import com.rba.pkce.model.repository.MovieRepository
+import com.rba.pkce.repository.MovieRepository
 import com.rba.pkce.networking.ApiManager
 import com.rba.pkce.util.ResultType
 import com.rba.pkce.util.RetrofitErrorUtil
@@ -14,7 +14,7 @@ class MovieDataSource(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MovieRepository {
 
-    override suspend fun get(): ResultType<Movie, ErrorModel> {
+    override suspend fun get(): ResultType<List<Movie>, ErrorModel> {
         return withContext(dispatcher) {
             try {
                 val response = ApiManager.get().movie()

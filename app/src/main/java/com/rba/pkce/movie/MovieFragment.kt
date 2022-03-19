@@ -29,7 +29,7 @@ class MovieFragment : Fragment() {
 
         movieViewModel.apiError.observe(viewLifecycleOwner, { error ->
             error.getContentIfNotHandled()?.let { model ->
-                binding.textResult.text = model.error.toString()
+                binding.textResult.text = model.toString()
             }
         })
 
