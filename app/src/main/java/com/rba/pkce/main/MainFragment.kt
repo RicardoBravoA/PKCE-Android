@@ -51,6 +51,16 @@ class MainFragment : Fragment() {
             }
         })
 
+        mainViewModel.loading.observe(viewLifecycleOwner, { data ->
+            data.getContentIfNotHandled()?.let {
+                if (it) {
+                    binding.progressBar.visibility = View.VISIBLE
+                } else {
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        })
+
         binding.buttonGet.setOnClickListener {
             mainViewModel.get()
         }

@@ -35,37 +35,51 @@ class MainViewModel(
     val apiError: LiveData<SingleEvent<ErrorModel>>
         get() = _apiError
 
+    private val _loading = MutableLiveData<SingleEvent<Boolean>>()
+    val loading: LiveData<SingleEvent<Boolean>>
+        get() = _loading
+
     fun get() {
+        _loading.value = SingleEvent(true)
+
         viewModelScope.launch {
             try {
                 when (val result = movieRepository.get()) {
                     is ResultType.Success -> {
                         _data.value = SingleEvent(result.value)
+                        _loading.value = SingleEvent(false)
                     }
                     is ResultType.Error -> {
                         _apiError.value = SingleEvent(result.value)
+                        _loading.value = SingleEvent(false)
                     }
                 }
             } catch (e: Exception) {
                 _error.value = SingleEvent(e.localizedMessage ?: "I'm an error")
+                _loading.value = SingleEvent(false)
             }
         }
     }
 
     fun pay(clientId: String, amount: String) {
+        _loading.value = SingleEvent(true)
         val request = TransactionRequest(clientId, amount)
+
         viewModelScope.launch {
             try {
                 when (val result = transactionRepository.pay(request)) {
                     is ResultType.Success -> {
                         _dataTransaction.value = SingleEvent(result.value)
+                        _loading.value = SingleEvent(false)
                     }
                     is ResultType.Error -> {
                         _apiError.value = SingleEvent(result.value)
+                        _loading.value = SingleEvent(false)
                     }
                 }
             } catch (e: Exception) {
                 _error.value = SingleEvent(e.localizedMessage ?: "I'm an error")
+                _loading.value = SingleEvent(false)
             }
         }
     }
