@@ -45,6 +45,12 @@ class MovieFragment : Fragment() {
             }
         })
 
+        movieViewModel.dataTransaction.observe(viewLifecycleOwner, { data ->
+            data.getContentIfNotHandled()?.let {
+                binding.textResult.text = it.toString()
+            }
+        })
+
         binding.buttonGet.setOnClickListener {
             movieViewModel.get()
         }
