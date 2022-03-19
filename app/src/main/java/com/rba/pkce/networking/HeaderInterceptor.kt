@@ -10,7 +10,7 @@ class HeaderInterceptor: Interceptor {
 
         val requestBuilder = chain.request().newBuilder()
             .header("request-id",
-                EncodeUtil.encode(chain.request().url.encodedPath, chain.request().method, chain.request().body.toString()))
+                EncodeUtil.encode(chain.request()))
             .build()
 
         return chain.proceed(requestBuilder)

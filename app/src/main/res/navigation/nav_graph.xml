@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MovieFragment">
+    app:startDestination="@id/MainFragment">
 
     <fragment
-        android:id="@+id/MovieFragment"
-        android:name="com.rba.pkce.movie.MovieFragment"
-        android:label="@string/movie_fragment_label"
-        tools:layout="@layout/fragment_first">
+        android:id="@+id/MainFragment"
+        android:name="com.rba.pkce.main.MainFragment"
+        android:label="@string/main_fragment_label"
+        tools:layout="@layout/fragment_main">
     </fragment>
 
 </navigation>

@@ -1,23 +1,24 @@
 package com.rba.pkce.datasource
 
+import com.rba.pkce.model.request.transaction.TransactionRequest
 import com.rba.pkce.model.response.error.ErrorModel
-import com.rba.pkce.model.response.movie.Movie
-import com.rba.pkce.repository.MovieRepository
+import com.rba.pkce.model.response.transaction.Transaction
 import com.rba.pkce.networking.ApiManager
+import com.rba.pkce.repository.TransactionRepository
 import com.rba.pkce.util.ResultType
 import com.rba.pkce.util.RetrofitErrorUtil
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MovieDataSource(
+class TransactionDataSource(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : MovieRepository {
+) : TransactionRepository {
 
-    override suspend fun get(): ResultType<List<Movie>, ErrorModel> {
+    override suspend fun pay(request: TransactionRequest): ResultType<Transaction, ErrorModel> {
         return withContext(dispatcher) {
             try {
-                val response = ApiManager.get().movie()
+                val response = ApiManager.get().pay(request)
                 if (response.isSuccessful) {
                     val data = response.body()
                     ResultType.Success(data!!)

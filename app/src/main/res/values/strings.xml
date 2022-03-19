@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PKCE-Android</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="movie_fragment_label">Movie Fragment</string>
+    <string name="main_fragment_label">Main Fragment</string>
     <string name="get">Get</string>
     <string name="post">Post</string>
 

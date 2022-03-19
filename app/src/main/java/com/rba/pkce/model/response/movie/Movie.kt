@@ -1,4 +1,4 @@
-package com.rba.pkce.model.movie
+package com.rba.pkce.model.response.movie
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
