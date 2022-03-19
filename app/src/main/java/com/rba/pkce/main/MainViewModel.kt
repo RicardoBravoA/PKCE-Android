@@ -1,4 +1,4 @@
-package com.rba.pkce.movie
+package com.rba.pkce.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,7 @@ import com.rba.pkce.util.ResultType
 import com.rba.pkce.util.SingleEvent
 import kotlinx.coroutines.launch
 
-class MovieViewModel(
+class MainViewModel(
     private val movieRepository: MovieRepository,
     private val transactionRepository: TransactionRepository
 ): ViewModel() {

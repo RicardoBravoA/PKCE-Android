@@ -1,4 +1,4 @@
-package com.rba.pkce.movie
+package com.rba.pkce.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,57 +6,57 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.rba.pkce.databinding.FragmentFirstBinding
+import com.rba.pkce.databinding.FragmentMainBinding
 
-class MovieFragment : Fragment() {
+class MainFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
-    private val movieViewModel: MovieViewModel by lazy {
-        ViewModelProvider(this, MovieViewModelFactory()).get(MovieViewModel::class.java)
+    private val mainViewModel: MainViewModel by lazy {
+        ViewModelProvider(this, MainViewModelFactory()).get(MainViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        movieViewModel.apiError.observe(viewLifecycleOwner, { error ->
+        mainViewModel.apiError.observe(viewLifecycleOwner, { error ->
             error.getContentIfNotHandled()?.let { model ->
                 binding.textResult.text = model.toString()
             }
         })
 
-        movieViewModel.error.observe(viewLifecycleOwner, { error ->
+        mainViewModel.error.observe(viewLifecycleOwner, { error ->
             error.getContentIfNotHandled()?.let { message ->
                 binding.textResult.text = message
             }
         })
 
-        movieViewModel.data.observe(viewLifecycleOwner, { data ->
+        mainViewModel.data.observe(viewLifecycleOwner, { data ->
             data.getContentIfNotHandled()?.let {
                 binding.textResult.text = it.toString()
             }
         })
 
-        movieViewModel.dataTransaction.observe(viewLifecycleOwner, { data ->
+        mainViewModel.dataTransaction.observe(viewLifecycleOwner, { data ->
             data.getContentIfNotHandled()?.let {
                 binding.textResult.text = it.toString()
             }
         })
 
         binding.buttonGet.setOnClickListener {
-            movieViewModel.get()
+            mainViewModel.get()
         }
 
         binding.buttonPost.setOnClickListener {
-            movieViewModel.pay(clientId = "100", amount = "100")
+            mainViewModel.pay(clientId = "100", amount = "100")
         }
     }
 
