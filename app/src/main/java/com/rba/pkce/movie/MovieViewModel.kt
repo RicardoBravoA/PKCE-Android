@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.rba.pkce.model.error.ErrorModel
-import com.rba.pkce.model.movie.Movie
+import com.rba.pkce.model.response.error.ErrorModel
+import com.rba.pkce.model.response.movie.Movie
 import com.rba.pkce.repository.MovieRepository
 import com.rba.pkce.util.ResultType
 import com.rba.pkce.util.SingleEvent

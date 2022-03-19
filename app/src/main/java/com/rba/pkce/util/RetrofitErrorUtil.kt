@@ -1,6 +1,6 @@
 package com.rba.pkce.util
 
-import com.rba.pkce.model.error.ErrorModel
+import com.rba.pkce.model.response.error.ErrorModel
 import com.rba.pkce.networking.ApiManager
 import retrofit2.Response
 import java.io.IOException

@@ -1,4 +1,4 @@
-package com.rba.pkce.model.error
+package com.rba.pkce.model.response.error
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
